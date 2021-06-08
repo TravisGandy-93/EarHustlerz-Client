@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateLoginForm } from '../actions/loginForm.js'
+import { login } from '../actions/currentUser.js'
 
-const Login = ({ loginFormData, updateLoginForm }) => {
+const Login = ({ loginFormData, updateLoginForm, login}) => {
 
     const handleInputChange = event => {
         const { name, value } = event.target
@@ -13,8 +14,13 @@ const Login = ({ loginFormData, updateLoginForm }) => {
         updateLoginForm(updatedFormInfo)
       }
 
+      const handleSubmit = event => {
+        event.preventDefault()
+        login(loginFormData)
+      }
+
     return(
-        <form onSubmit={undefined}>
+        <form onSubmit={handleSubmit}>
             <input placeholder="Username" value={loginFormData.username} name="username" type="text" onChange={handleInputChange} />
             <input placeholder="Password" value={loginFormData.password} name="password" type="text" onChange={handleInputChange} />
             <input type="submit" value="Log In" />
@@ -28,4 +34,4 @@ const mapStateToProps = state => {
       }
 }
 
-export default connect(mapStateToProps, {updateLoginForm} )(Login)
+export default connect(mapStateToProps, {updateLoginForm, login} )(Login)
