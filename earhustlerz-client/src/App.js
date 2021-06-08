@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
+import Login from './components/Login';
 
 class App extends React.Component {
 
 
   render(){
   return (
-      "Hey Hey it's React"
+      <Login />
   );
   }
 }
