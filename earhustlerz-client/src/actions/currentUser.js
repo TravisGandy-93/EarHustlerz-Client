@@ -1,3 +1,4 @@
+import { getFavorites } from "./favorites.js"
 import { resetLoginForm } from "./loginForm.js"
 
 //synchronous action creator
@@ -32,6 +33,7 @@ export const login = credentials => {
                 alert(response.error)
               } else {
                 dispatch(setCurrentUser(response.data))
+                dispatch(getFavorites())
                 dispatch(resetLoginForm())
               }
             })
@@ -63,6 +65,7 @@ export const getCurrentUser = () => {
             console.log(response.error)
           } else {
             dispatch(setCurrentUser(response.data))
+            dispatch(getFavorites(response.data))
           }
         })
         .catch(console.log)

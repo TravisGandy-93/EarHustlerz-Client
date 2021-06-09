@@ -1,9 +1,10 @@
 import React from 'react'
+import Favorites from './Favorites.js'
 
 const MainContainer = () => {
     return (
         <div className="MainContainer">
-            main containing over here
+            <Favorites/>
         </div>
     )
 }
