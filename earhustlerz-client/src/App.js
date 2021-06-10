@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { getCurrentUser } from "./actions/currentUser.js"
 import NavBar from './components/NavBar.js';
 // import MainContainer from './components/MainContainer.js';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Login from './components/Login';
 import Signup from './components/Signup.js';
 import Favorites from './components/Favorites';
 import Home from './components/Home'
+
 
 class App extends React.Component {
 
@@ -21,11 +22,13 @@ class App extends React.Component {
   return (
     <div className="App">
       <NavBar/>
-      <Route exact path="/" render={()=> loggedIn? <Favorites/> : <Home/>}/>
+      <Switch>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/signup" component={Signup}/>
+      <Route exact path="/" render={(props)=> loggedIn? <Favorites {...props}/> : <Home {...props}/>}/>
       <Route exact path="/favorites" component={Favorites}/>
-     {/* <MainContainer/> */}
+      </Switch>
+     {/* <MainContainer/> */} 
     </div>
   );
   }

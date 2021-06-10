@@ -1,11 +1,15 @@
 import React from 'react'
+import Login from './Login'
+import Signup from './Signup'
+import { Link } from 'react-router-dom'
+
 
 const Home = () => {
     return (
         <div>
-        <h2> Welcome to EarHustlerz, please  <button> Log In</button>
+        <h2> Welcome to EarHustlerz, please  <Link to="/signup">Sign Up</Link>
          OR
-         <button> Sign Up </button> </h2>
+         <Link to="/login"> Log In </Link> </h2>
         </div>
     )
 }
