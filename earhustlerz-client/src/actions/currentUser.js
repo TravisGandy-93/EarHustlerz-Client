@@ -1,5 +1,6 @@
 import { getFavorites } from "./favorites.js"
 import { resetLoginForm } from "./loginForm.js"
+import { resetSignupForm } from "./signupForm.js"
 
 //synchronous action creator
 export const setCurrentUser = user => {
@@ -35,6 +36,33 @@ export const login = credentials => {
                 dispatch(setCurrentUser(response.data))
                 dispatch(getFavorites())
                 dispatch(resetLoginForm())
+              }
+            })
+            .catch(console.log)
+    }
+}
+
+export const signup = credentials => {
+    return dispatch => {
+        const userInfo = {
+            user: credentials
+        }
+        return fetch("http://localhost:3000/api/v1/signup", {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+        .then(r => r.json())
+        .then(response => {
+            if (response.error) {
+                alert(response.error)
+              } else {
+                dispatch(setCurrentUser(response.data))
+                dispatch(getFavorites())
+                dispatch(resetSignupForm())
               }
             })
             .catch(console.log)

@@ -6,7 +6,7 @@ import NavBar from './components/NavBar.js';
 // import MainContainer from './components/MainContainer.js';
 import { Route } from 'react-router-dom'
 import Login from './components/Login';
-import Logout from './components/Logout';
+import Signup from './components/Signup.js';
 import Favorites from './components/Favorites';
 
 class App extends React.Component {
@@ -20,7 +20,7 @@ class App extends React.Component {
     <div className="App">
       <NavBar/>
       <Route exact path="/login" component={Login}/>
-      
+      <Route exact path="/signup" component={Signup}/>
       <Route exact path="/favorites" component={Favorites}/>
      {/* <MainContainer/> */}
     </div>
