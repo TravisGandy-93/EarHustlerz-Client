@@ -8,7 +8,7 @@ const FavoriteCard = ({favorite}) => {
                 <div class="card-body">
                   <h5 class="card-title">{favorite.attributes.title}</h5>
                   <h6 class="card-artist">{favorite.attributes.artist}</h6>
-                  <h7 class="card-genre">{favorite.attributes.genre}</h7>
+                  <h6 class="card-genre">{favorite.attributes.genre}</h6>
                 </div>
                 <div class="card-body">
     <a href="#" class="card-link">TrackList</a>

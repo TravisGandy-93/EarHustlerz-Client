@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Signup from './components/Signup.js';
 import Favorites from './components/Favorites';
 import Home from './components/Home'
+import NewFavoriteForm from './components/NewFavoriteForm';
 
 
 class App extends React.Component {
@@ -27,6 +28,7 @@ class App extends React.Component {
       <Route exact path="/signup" component={Signup}/>
       <Route exact path="/" render={(props)=> loggedIn? <Favorites {...props}/> : <Home {...props}/>}/>
       <Route exact path="/favorites" component={Favorites}/>
+      <Route exact path="/albums/new" component={NewFavoriteForm}/>
       </Switch>
      {/* <MainContainer/> */} 
     </div>
