@@ -2,17 +2,19 @@ import React from 'react'
 import { updateNewFavoriteForm } from '../actions/newFavoriteForm'
 import { connect } from 'react-redux'
 
-const NewFavoriteForm = ({title, artist, cover}) => {
+const NewFavoriteForm = ({title, artist, cover, history}) => {
 
     const handleChange = event =>{
-        event.preventDefault()
         const { name, value } = event.target
         updateNewFavoriteForm(name, value)
     }
+
+    const handleSubmit = e => e.preventDefault()
+    
     return (
         <div>
             <h3>create a new album</h3>
-        <form>
+        <form onSubmit={handleSubmit}>
             <input
                 placeholder="title"
                 name="title"

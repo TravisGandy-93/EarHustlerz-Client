@@ -2,12 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Login from './Login.js';
 import Logout from './Logout.js'
+import {  NavLink } from 'react-router-dom'
+
 
 
 const NavBar = ({ currentUser }) => {
     return (
         <div className="NavBar"> 
           { currentUser ? <h2>Wassup { currentUser.attributes.username }</h2> : "" } 
+          { currentUser ? <NavLink to="/">Home</NavLink> : "" }
+          { currentUser ? <NavLink to="/albums">All Albums</NavLink> : "" }
+          { currentUser ? <NavLink to="/albums/new">Add Album</NavLink> : "" }
+          { currentUser ? <NavLink to="/reviews">See All Reviews</NavLink> : "" }
           { currentUser ? <Logout/> : "" }
         </div>
     )
