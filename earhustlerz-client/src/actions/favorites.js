@@ -6,6 +6,10 @@ export const setFavorites = favorites => {
     }
 }
 
+export const clearFavorites = () => ({
+  type: "CLEAR_FAVORITES"
+})
+
 //asynchro
 export const getFavorites = () =>{
     return dispatch => {
