@@ -38,3 +38,25 @@ export const getFavorites = () =>{
         .catch(console.log)
     }
 }
+
+export const createFavorite = favoriteData => {
+  return dispatch => {
+    console.log("in form submit")
+    const sendableFavoriteData = {
+      title: favoriteData.title,
+      artist: favoriteData.artist,
+      cover: favoriteData.cover,
+      user_id: favoriteData.userId
+    }
+    return fetch("http://localhost:3000/api/v1/albums", {
+    credentials: "include",  
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(sendableFavoriteData)
+    })
+    .then(r => r.json)
+    .then(res => console.log(res))
+  }
+}

@@ -1,16 +1,18 @@
 import React from 'react'
 import { updateNewFavoriteForm } from '../actions/newFavoriteForm'
 import { connect } from 'react-redux'
+import { createFavorite } from '../actions/favorites'
 
-const NewFavoriteForm = ({title, artist, cover, history, updateNewFavoriteForm}) => {
-
+const NewFavoriteForm = ({formData, userId, history, updateNewFavoriteForm, createFavorite}) => {
+  const {title, artist, cover} = formData
     const handleChange = event =>{
         const { name, value } = event.target
         updateNewFavoriteForm(name, value)
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
+    const handleSubmit = event => {
+        event.preventDefault()
+        createFavorite(formData)
     }
 
     return (
@@ -21,36 +23,35 @@ const NewFavoriteForm = ({title, artist, cover, history, updateNewFavoriteForm})
                 placeholder="title"
                 name="title"
                 onChange={handleChange}
-                value={title}
+                defaultValue={title}
             />
             <input
                 placeholder="artist"
                 name="artist"
                 onChange={handleChange}
-                value={artist}
+                defaultValue={artist}
             />
             <input
                 placeholder="cover image url"
                 name="cover"
                 onChange={handleChange}
-                value={cover}
+                defaultValue={cover}
             />
-            <input type="Submit" value="Create Album"/>
+            <input type="Submit" defaultValue="Submit"/>
         </form>
         </div>
     )
 };
 
 const mapStateToProps = state => {
-    const {title, artist, cover} = state.newFavoriteForm
+    const userId = state.currentUser ? state.currentUser.id : ""
     return {
-        title,
-        artist,
-        cover
+        formData: state.newFavoriteForm,
+        userId
     }
 }
 
-export default connect(mapStateToProps, { updateNewFavoriteForm })(NewFavoriteForm)
+export default connect(mapStateToProps, { updateNewFavoriteForm, createFavorite })(NewFavoriteForm)
 
 
 //t.string "title"

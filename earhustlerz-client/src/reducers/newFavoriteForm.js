@@ -11,8 +11,7 @@ export default (state = initialState, action) => {
                 ...state,
                 [action.formData.name]: action.formData.value
             }
-            console.log("return value is", returnVal);
-            return returnVal
+            return returnVal 
         case "RESET_NEW_FAVORITE_FORM":
             return initialState
         default:
