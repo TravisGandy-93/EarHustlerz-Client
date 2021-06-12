@@ -1,5 +1,5 @@
 //synchro
-export const setFavorites = favorites => {
+export const setFavorites = favorites => { 
     return {
         type: "SET_FAVORITES",
         favorites
@@ -9,6 +9,13 @@ export const setFavorites = favorites => {
 export const clearFavorites = () => ({
   type: "CLEAR_FAVORITES"
 })
+
+export const addFavorite = favorite => {
+  return {
+    type: "ADD_FAVORITE",
+    favorite
+  }
+}
 
 //asynchro
 export const getFavorites = () =>{

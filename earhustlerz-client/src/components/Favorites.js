@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import {connect} from 'react-redux' 
 import FavoriteCard from './FavoriteCard.js'
 // import FavoriteCard from './FavoriteCard.js'
 
