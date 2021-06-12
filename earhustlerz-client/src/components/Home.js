@@ -1,6 +1,5 @@
 import React from 'react'
 import Login from './Login'
-import Signup from './Signup'
 import { Link } from 'react-router-dom'
 
 
@@ -8,8 +7,10 @@ const Home = () => {
     return (
         <div>
         <h2> Welcome to EarHustlerz, please  <Link to="/signup">Sign Up</Link>
+         <br></br>
          OR
-         <Link to="/login"> Log In </Link> </h2>
+         </h2>
+         <Login/>
         </div>
     )
 }
