@@ -12,7 +12,8 @@ const NewFavoriteForm = ({formData, userId, history, updateNewFavoriteForm, crea
 
     const handleSubmit = event => {
         event.preventDefault()
-        createFavorite(formData)
+        createFavorite({...formData,
+        userId}, history)
     }
 
     return (
@@ -44,10 +45,10 @@ const NewFavoriteForm = ({formData, userId, history, updateNewFavoriteForm, crea
 };
 
 const mapStateToProps = state => {
-    const userId = state.currentUser ? state.currentUser.id : ""
+    const userId = state.currentUserReducer ? state.currentUserReducer.id : ""
     return {
         formData: state.newFavoriteForm,
-        userId
+        user_id: userId
     }
 }
 

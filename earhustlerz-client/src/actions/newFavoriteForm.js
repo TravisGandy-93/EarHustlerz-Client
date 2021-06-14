@@ -4,3 +4,10 @@ export const updateNewFavoriteForm = (name, value) => {
         formData: {name, value}
     }
 }
+
+export const resetNewFavoriteForm = () => {
+    return {
+        type: "RESET_NEW_FAVORITE_FORM",
+       
+    }
+}

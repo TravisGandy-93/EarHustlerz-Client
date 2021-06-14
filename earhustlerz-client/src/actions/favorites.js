@@ -39,14 +39,13 @@ export const getFavorites = () =>{
     }
 }
 
-export const createFavorite = favoriteData => {
+export const createFavorite = (favoriteData, history) => {
   return dispatch => {
-    console.log("in form submit")
     const sendableFavoriteData = {
       title: favoriteData.title,
       artist: favoriteData.artist,
       cover: favoriteData.cover,
-      user_id: favoriteData.userId
+      user_id: favoriteData.user_id 
     }
     return fetch("http://localhost:3000/api/v1/albums", {
     credentials: "include",  
@@ -56,7 +55,17 @@ export const createFavorite = favoriteData => {
     },
     body: JSON.stringify(sendableFavoriteData)
     })
-    .then(r => r.json)
-    .then(res => console.log(res))
+    .then(r => r.json())
+    .then(resp => {
+      if (resp.error) {
+        alert(resp.error)
+      } else {
+        dispatch(addFavorite(resp.data))
+        console.log(resp.data);
+       // dispatch(resetFavoriteForm())
+        history.push(`/albums/${resp.data.id}`)
+      }
+    })
+      .catch(console.log())
   }
 }
