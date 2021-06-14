@@ -4,12 +4,13 @@ import { connect } from 'react-redux'
 import { getCurrentUser } from "./actions/currentUser.js"
 import NavBar from './components/NavBar.js';
 // import MainContainer from './components/MainContainer.js';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './components/Login';
 import Signup from './components/Signup.js';
 import Favorites from './components/Favorites';
 import Home from './components/Home'
 import NewFavoriteForm from './components/NewFavoriteForm';
+import FavoriteCard from './components/FavoriteCard';
 
 
 class App extends React.Component {
@@ -19,7 +20,7 @@ class App extends React.Component {
   }
 
   render(){
-    const { loggedIn } = this.props
+    const { loggedIn, favorites } = this.props
   return (
     <div className="App">
       <NavBar/>
@@ -29,6 +30,10 @@ class App extends React.Component {
       <Route exact path="/" render={(props)=> loggedIn? <Favorites {...props}/> : <Home {...props}/>}/>
       <Route exact path="/favorites" component={Favorites}/>
       <Route exact path="/albums/new" component={NewFavoriteForm}/>
+      <Route exact path="/albums/:id" render={(props) => {
+        const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
+        return <FavoriteCard favorite={favorite} {...props}/>
+      }}/>
       </Switch>
      {/* <MainContainer/> */} 
     </div>
@@ -38,9 +43,10 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return ({
-    loggedIn: !!state.currentUserReducer
+    loggedIn: !!state.currentUserReducer,
+    favorites: state.favorites
   })
 }
 
 
-export default connect(mapStateToProps, {getCurrentUser})(App);
+export default withRouter(connect(mapStateToProps, {getCurrentUser})(App));
