@@ -36,7 +36,11 @@ class App extends React.Component {
         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
         return <FavoriteCard favorite={favorite} {...props}/>
       }}/>
-      </Switch>
+       <Route exact path="/albums/:id/edit" render={(props) => {
+        const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
+        return <NewFavoriteForm favorite={favorite} {...props}/>
+      }}/>
+      </Switch> 
      {/* <MainContainer/> */} 
     </div>
   );

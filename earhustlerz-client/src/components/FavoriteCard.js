@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NewFavoriteForm from './NewFavoriteForm'
 
 
 const FavoriteCard = ({favorite}) => {
@@ -15,6 +16,9 @@ const FavoriteCard = ({favorite}) => {
                 <div class="card-body">
     <a href="#" class="card-link">TrackList</a>
     <a href="#" class="card-link">See Reviews</a>
+    <br></br>
+    <Link to={`/albums/${favorite.id}/edit`}>Edit</Link>
+
   </div>
                 </div>  : <p>No Card</p>
     )

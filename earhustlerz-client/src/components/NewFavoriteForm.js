@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { createFavorite } from '../actions/favorites'
 
 const NewFavoriteForm = ({formData, userId, history, updateNewFavoriteForm, createFavorite}) => {
-  const {title, artist, cover} = formData
+  const {title, artist, cover, genre} = formData
     const handleChange = event =>{
         const { name, value } = event.target
         updateNewFavoriteForm(name, value)
@@ -31,6 +31,12 @@ const NewFavoriteForm = ({formData, userId, history, updateNewFavoriteForm, crea
                 name="artist"
                 onChange={handleChange}
                 defaultValue={artist}
+            />
+             <input
+                placeholder="genre"
+                name="genre"
+                onChange={handleChange}
+                defaultValue={genre}
             />
             <input
                 placeholder="cover image url"
