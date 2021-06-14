@@ -28,7 +28,9 @@ class App extends React.Component {
       <Route exact path="/login" component={Login}/>
       <Route exact path="/signup" component={Signup}/>
       <Route exact path="/" render={(props)=> loggedIn? <Favorites {...props}/> : <Home {...props}/>}/>
-      <Route exact path="/favorites" component={Favorites}/>
+      <Route exact path="/favorites" render={(props) => 
+        console.log(props)
+      }/>
       <Route exact path="/albums/new" component={NewFavoriteForm}/>
       <Route exact path="/albums/:id" render={(props) => {
         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
