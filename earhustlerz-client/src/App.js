@@ -12,6 +12,8 @@ import Home from './components/Home'
 import FavoriteForm from './components/FavoriteForm';
 import FavoriteCard from './components/FavoriteCard';
 import NewFavoriteFormContainer from './components/NewFavoriteFormContainer';
+import EditFavoriteFormContainer from './components/EditFavoriteFormContainer';
+import { setFavoriteForEdit } from './actions/favoriteForm'
 
 
 class App extends React.Component {
@@ -21,7 +23,7 @@ class App extends React.Component {
   }
 
   render(){
-    const { loggedIn, favorites } = this.props
+    const { loggedIn, favorites, setFavoriteForEdit } = this.props
   return (
     <div className="App">
       <NavBar/>
@@ -37,9 +39,11 @@ class App extends React.Component {
         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
         return <FavoriteCard favorite={favorite} {...props}/>
       }}/>
-       <Route exact path="/albums/:id/edit" render={(props) => {
-        const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
-        return <FavoriteForm favorite={favorite} {...props}/>
+       <Route exact path="/albums/:id/edit" render={props => {
+         console.log(props)
+         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
+       // setFavoriteForEdit(favorite)
+        return <EditFavoriteFormContainer favorite={favorite} {...props}/>
       }}/>
       </Switch> 
      {/* <MainContainer/> */} 
@@ -56,4 +60,4 @@ const mapStateToProps = state => {
 }
 
 
-export default withRouter(connect(mapStateToProps, {getCurrentUser})(App));
+export default withRouter(connect(mapStateToProps, {getCurrentUser, setFavoriteForEdit})(App));

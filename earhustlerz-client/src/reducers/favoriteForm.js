@@ -1,7 +1,8 @@
 const initialState = {
     title: "",
     cover: "",
-    artist: ""
+    artist: "",
+    genre: "",
 }
 
 export default (state = initialState, action) => {
@@ -14,7 +15,7 @@ export default (state = initialState, action) => {
             return returnVal 
         case "RESET_NEW_FAVORITE_FORM":
             return initialState
-        case "SET_FAVORITE_FOR_EDIT":
+        case "SET_FAVORITE_FORM_FOR_EDIT":
             return action.favoriteFormData
         default:
             return state

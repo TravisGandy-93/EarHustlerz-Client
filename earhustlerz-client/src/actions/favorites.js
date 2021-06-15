@@ -19,6 +19,13 @@ export const addFavorite = favorite => {
   }
 }
 
+export const updateFavoriteStore = favorite => {
+  return {
+    type: "UPDATE_FAVORITE",
+    favorite
+  }
+}
+
 //asynchro
 export const getFavorites = () =>{
     return dispatch => {
@@ -66,6 +73,37 @@ export const createFavorite = (favoriteData, history) => {
         dispatch(addFavorite(resp.data))
         console.log(resp.data);
         dispatch(resetFavoriteForm())
+        history.push(`/albums/${resp.data.id}`)
+      }
+    })
+      .catch(console.log())
+  }
+}
+
+export const updateFavorite = (favoriteData, history) => {
+  return dispatch => {
+    const sendableFavoriteData = {
+      title: favoriteData.title,
+      artist: favoriteData.artist,
+      cover: favoriteData.cover,
+      genre: favoriteData.genre,
+      user_id: favoriteData.user_id 
+    }
+    return fetch(`http://localhost:3000/api/v1/albums/${favoriteData.id}`, {
+    credentials: "include",  
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(sendableFavoriteData)
+    })
+    .then(r => r.json())
+    .then(resp => {
+      if (resp.error) {
+        alert(resp.error)
+      } else {
+        dispatch(updateFavoriteStore(resp.data))
+        console.log(resp.data);
         history.push(`/albums/${resp.data.id}`)
       }
     })
