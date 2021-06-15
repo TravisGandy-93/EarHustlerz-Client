@@ -10,7 +10,7 @@ const NewFavoriteFormContainer = ({ history, createFavorite }) => {
       ...formData,
       userId
     }, history)
-  }
+  } 
   return  <FavoriteForm history={history} handleSubmit={handleSubmit} />
 };
 

@@ -11,6 +11,7 @@ import Favorites from './components/Favorites';
 import Home from './components/Home'
 import FavoriteForm from './components/FavoriteForm';
 import FavoriteCard from './components/FavoriteCard';
+import NewFavoriteFormContainer from './components/NewFavoriteFormContainer';
 
 
 class App extends React.Component {
@@ -31,7 +32,7 @@ class App extends React.Component {
       <Route exact path="/favorites" render={(props) => 
         console.log(props)
       }/>
-      <Route exact path="/albums/new" component={FavoriteForm}/>
+      <Route exact path="/albums/new" component={NewFavoriteFormContainer}/>
       <Route exact path="/albums/:id" render={(props) => {
         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
         return <FavoriteCard favorite={favorite} {...props}/>

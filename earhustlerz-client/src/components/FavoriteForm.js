@@ -3,23 +3,20 @@ import { updateFavoriteForm } from '../actions/favoriteForm'
 import { connect } from 'react-redux'
 import { createFavorite } from '../actions/favorites'
 
-const FavoriteForm = ({formData, userId, history, updateFavoriteForm, createFavorite, favorite}) => {
+const FavoriteForm = ({formData, userId, history, updateFavoriteForm, createFavorite, favorite, handleSubmit}) => {
   const {title, artist, cover, genre} = formData
     const handleChange = event =>{
         const { name, value } = event.target
         updateFavoriteForm(name, value)
     } 
 
-    const handleSubmit = event => {
-        event.preventDefault()
-        createFavorite({...formData,
-        userId}, history)
-    }
-
     return (
         <div>
             <h3>create a new album</h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={event => {
+           event.preventDefault()
+          handleSubmit(formData)
+            }}>
             <input
                 placeholder="title"
                 name="title"
