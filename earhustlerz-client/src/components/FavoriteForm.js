@@ -1,14 +1,14 @@
 import React from 'react'
-import { updateNewFavoriteForm } from '../actions/newFavoriteForm'
+import { updateFavoriteForm } from '../actions/favoriteForm'
 import { connect } from 'react-redux'
 import { createFavorite } from '../actions/favorites'
 
-const NewFavoriteForm = ({formData, userId, history, updateNewFavoriteForm, createFavorite}) => {
+const FavoriteForm = ({formData, userId, history, updateFavoriteForm, createFavorite}) => {
   const {title, artist, cover, genre} = formData
     const handleChange = event =>{
         const { name, value } = event.target
-        updateNewFavoriteForm(name, value)
-    }
+        updateFavoriteForm(name, value)
+    } 
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -53,12 +53,12 @@ const NewFavoriteForm = ({formData, userId, history, updateNewFavoriteForm, crea
 const mapStateToProps = state => {
     const userId = state.currentUserReducer ? state.currentUserReducer.id : ""
     return {
-        formData: state.newFavoriteForm,
+        formData: state.favoriteForm,
         user_id: userId
     }
 }
 
-export default connect(mapStateToProps, { updateNewFavoriteForm, createFavorite })(NewFavoriteForm)
+export default connect(mapStateToProps, { updateFavoriteForm, createFavorite })(FavoriteForm)
 
 
 //t.string "title"

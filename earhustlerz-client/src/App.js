@@ -9,7 +9,7 @@ import Login from './components/Login';
 import Signup from './components/Signup.js';
 import Favorites from './components/Favorites';
 import Home from './components/Home'
-import NewFavoriteForm from './components/NewFavoriteForm';
+import FavoriteForm from './components/FavoriteForm';
 import FavoriteCard from './components/FavoriteCard';
 
 
@@ -31,14 +31,14 @@ class App extends React.Component {
       <Route exact path="/favorites" render={(props) => 
         console.log(props)
       }/>
-      <Route exact path="/albums/new" component={NewFavoriteForm}/>
+      <Route exact path="/albums/new" component={FavoriteForm}/>
       <Route exact path="/albums/:id" render={(props) => {
         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
         return <FavoriteCard favorite={favorite} {...props}/>
       }}/>
        <Route exact path="/albums/:id/edit" render={(props) => {
         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
-        return <NewFavoriteForm favorite={favorite} {...props}/>
+        return <FavoriteForm favorite={favorite} {...props}/>
       }}/>
       </Switch> 
      {/* <MainContainer/> */} 

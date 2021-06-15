@@ -1,4 +1,4 @@
-import { resetNewFavoriteForm } from "./newFavoriteForm"
+import { resetFavoriteForm } from "./favoriteForm"
 
 //synchro
 export const setFavorites = favorites => { 
@@ -64,7 +64,7 @@ export const createFavorite = (favoriteData, history) => {
       } else {
         dispatch(addFavorite(resp.data))
         console.log(resp.data);
-        dispatch(resetNewFavoriteForm())
+        dispatch(resetFavoriteForm())
         history.push(`/albums/${resp.data.id}`)
       }
     })

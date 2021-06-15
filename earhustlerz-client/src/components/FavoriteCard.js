@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import NewFavoriteForm from './NewFavoriteForm'
+import FavoriteForm from './FavoriteForm'
 
 
 const FavoriteCard = ({favorite}) => {
