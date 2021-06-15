@@ -3,7 +3,7 @@ import { updateFavoriteForm } from '../actions/favoriteForm'
 import { connect } from 'react-redux'
 import { createFavorite } from '../actions/favorites'
 
-const FavoriteForm = ({formData, userId, history, updateFavoriteForm, createFavorite}) => {
+const FavoriteForm = ({formData, userId, history, updateFavoriteForm, createFavorite, favorite}) => {
   const {title, artist, cover, genre} = formData
     const handleChange = event =>{
         const { name, value } = event.target

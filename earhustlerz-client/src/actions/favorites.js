@@ -47,6 +47,7 @@ export const createFavorite = (favoriteData, history) => {
       title: favoriteData.title,
       artist: favoriteData.artist,
       cover: favoriteData.cover,
+      genre: favoriteData.genre,
       user_id: favoriteData.user_id 
     }
     return fetch("http://localhost:3000/api/v1/albums", {

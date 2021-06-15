@@ -6,7 +6,7 @@ import FavoriteForm from './FavoriteForm'
 const FavoriteCard = ({favorite}) => {
     return (
         favorite ? 
-                <div class="card">
+                <div className="card">
                 <img class="card-top" src={favorite.attributes.cover} alt="Card cap"></img>
                 <div class="card-body">
                 <h5 class="card-title"> <Link to={`/albums/${favorite.id}`}>{favorite.attributes.title}</Link> </h5>

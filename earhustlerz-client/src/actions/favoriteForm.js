@@ -11,3 +11,16 @@ export const resetFavoriteForm = () => {
        
     }
 }
+
+export const setFavoriteForEdit = (favorite) => {
+    const favoriteFormData = {
+        title: favorite.attributes.title,
+        artist: favorite.attribute.artist,
+        cover: favorite.attribute.cover,
+        genre: favorite.attribute.genre
+    }
+    return {
+        type: "SET_FAVORITE_FOR_EDIT",
+        favoriteFormData 
+    }
+};
