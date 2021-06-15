@@ -11,7 +11,7 @@ class EditFavoriteFormContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        this.props.favorite && !prevProps.favorite && this.props.setFormDataForEdit(this.props.favorite)
+        this.props.favorite && !prevProps.favorite && this.props.setFavoriteForEdit(this.props.favorite)
       }
 
   handleSubmit = (formData) => {
@@ -24,7 +24,7 @@ class EditFavoriteFormContainer extends React.Component {
   render() {
       const {history, favorite} = this.props
       const id = favorite ? favorite.id : null
-      return <FavoriteForm editMode favorite={favorite.attributes} history={history} handleSubmit={this.handleSubmit} />
+      return <FavoriteForm editMode favorite={favorite} history={history} handleSubmit={this.handleSubmit} />
   }
 };
 

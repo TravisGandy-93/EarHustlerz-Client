@@ -21,28 +21,28 @@ const FavoriteForm = ({formData, user_id, history, updateFavoriteForm, favorite,
                 placeholder="title"
                 name="title"
                 onChange={handleChange}
-                defaultValue={favorite? favorite.title : title}
+                defaultValue={favorite? favorite.attributes.title : title}
                 autocomplete="off"
             />
             <input
                 placeholder="artist"
                 name="artist"
                 onChange={handleChange}
-                defaultValue={favorite? favorite.artist : artist}
+                defaultValue={favorite? favorite.attributes.artist : artist}
                 autocomplete="off"
             />
              <input
                 placeholder="genre"
                 name="genre"
                 onChange={handleChange}
-                defaultValue={favorite? favorite.genre : genre}
+                defaultValue={favorite? favorite.attributes.genre : genre}
                 autocomplete="off"
             />
             <input
                 placeholder="cover image url"
                 name="cover"
                 onChange={handleChange}
-                defaultValue={favorite? favorite.cover : cover} 
+                defaultValue={favorite? favorite.attributes.cover : cover} 
                 autocomplete="off"
             />
             <input type="Submit" value={editMode ? "Update Album" : "Create Album" }/>
