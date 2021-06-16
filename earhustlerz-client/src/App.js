@@ -52,7 +52,10 @@ class App extends React.Component {
         return <EditFavoriteFormContainer favorite={favorite} {...props}/>
       }}/>
 
-      <Route exact path="/albums/:id/reviews" component={ReviewContainer}/>
+      <Route exact path="/albums/:id/reviews" render={props => {
+      const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
+        return <ReviewContainer favorite={favorite}/>
+      }}/>
       </Switch> 
      {/* <MainContainer/> */} 
     </div>
