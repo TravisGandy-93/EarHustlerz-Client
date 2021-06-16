@@ -26,19 +26,26 @@ class App extends React.Component {
   return (
     <div className="App">
       <NavBar/>
+      
       <Switch>
       <Route exact path="/login" component={Login}/>
+
       <Route exact path="/signup" component={Signup}/>
+
       <Route exact path="/" render={(props)=> loggedIn? <Favorites {...props}/> : <Home {...props}/>}/>
+      
       <Route exact path="/favorites" render={(props) => {
         const userFavorites = favorites.filter(favorite => favorite.attributes.user_id == currentUser.id)
-        return <Favorites favorites={userFavorites} {...props}/>
+        return userFavorites.map((favorite) => <FavoriteCard favorite={favorite} {...props}/>)
       }}/>
+      
       <Route exact path="/albums/new" component={NewFavoriteFormContainer}/>
+      
       <Route exact path="/albums/:id" render={(props) => {
         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
         return <FavoriteCard favorite={favorite} {...props}/>
       }}/>
+       
        <Route exact path="/albums/:id/edit" render={props => {
          const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
        // setFavoriteForEdit(favorite)
