@@ -9,7 +9,6 @@ import Login from './components/Login';
 import Signup from './components/Signup.js';
 import Favorites from './components/Favorites';
 import Home from './components/Home'
-import FavoriteForm from './components/FavoriteForm';
 import FavoriteCard from './components/FavoriteCard';
 import NewFavoriteFormContainer from './components/NewFavoriteFormContainer';
 import EditFavoriteFormContainer from './components/EditFavoriteFormContainer';
@@ -23,7 +22,7 @@ class App extends React.Component {
   }
 
   render(){
-    const { loggedIn, favorites, setFavoriteForEdit } = this.props
+    const { loggedIn, favorites } = this.props
   return (
     <div className="App">
       <NavBar/>
