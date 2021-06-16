@@ -14,10 +14,11 @@ const FavoriteCard = ({favorite}) => {
                   <h6 className="card-genre">{favorite.attributes.genre}</h6>
                 </div>
                 <div className="card-body">
-    <a href="#" className="card-link">TrackList</a>
-    <a href="#" className="card-link">See Reviews</a>
-    <br></br>
-    <Link to={`/albums/${favorite.id}/edit`}>Edit</Link>
+                  <span><Link to="">TrackList</Link></span>
+                  <span>    |     </span>
+                  <span><Link to="">See Reviews</Link></span>
+                <br></br>
+                <Link to={`/albums/${favorite.id}/edit`}>Edit</Link>
 
   </div>
                 </div>  : <p>No Card</p>
