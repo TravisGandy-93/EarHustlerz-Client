@@ -1,6 +1,6 @@
 import React from 'react';
 import FavoriteForm from './FavoriteForm'
-import { updateFavorite } from '../actions/favorites'
+import { updateFavorite, deleteFavorite } from '../actions/favorites'
 import { connect } from 'react-redux'
 import { setFavoriteForEdit } from '../actions/favoriteForm'
 
@@ -22,10 +22,14 @@ class EditFavoriteFormContainer extends React.Component {
     }, history)
   } 
   render() {
-      const {history, favorite} = this.props
+      const {history, favorite, deleteFavorite} = this.props
       const id = favorite ? favorite.id : null
-      return <FavoriteForm editMode favorite={favorite} history={history} handleSubmit={this.handleSubmit} />
+      return <>
+            <FavoriteForm editMode favorite={favorite} history={history} handleSubmit={this.handleSubmit} />
+            <br/>
+            <button style={{color:'orange'}} onClick={() => deleteFavorite(id, history)}>Delete Album</button>
+            </>
   }
 };
 
-export default connect(null, { updateFavorite, setFavoriteForEdit })(EditFavoriteFormContainer);
+export default connect(null, { updateFavorite, setFavoriteForEdit, deleteFavorite })(EditFavoriteFormContainer);

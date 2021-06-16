@@ -19,6 +19,13 @@ export const addFavorite = favorite => {
   }
 }
 
+export const deleteFavoriteStore = id => {
+  return {
+    type: "DELETE_FAVORITE",
+    id
+  }
+}
+
 export const updateFavoriteStore = favorite => {
   return {
     type: "UPDATE_FAVORITE",
@@ -110,3 +117,26 @@ export const updateFavorite = (favoriteData, history) => {
       .catch(console.log())
   }
 }
+
+export const deleteFavorite = (id, history) => {
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/albums/${id}`, {
+    credentials: "include",  
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      'Accept': 'application/json'
+    }
+   })
+    .then(r => r.json())
+    .then(resp => {
+      if (resp.error) {
+        alert(resp.error)
+      } else {
+        dispatch(deleteFavoriteStore(id))
+        history.push(`/`)
+      }
+    })
+      .catch(console.log())
+  }
+};

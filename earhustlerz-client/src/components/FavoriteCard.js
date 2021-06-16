@@ -7,15 +7,15 @@ const FavoriteCard = ({favorite}) => {
     return (
         favorite ? 
                 <div className="card">
-                <img class="card-top" src={favorite.attributes.cover} alt="Card cap"></img>
-                <div class="card-body">
-                <h5 class="card-title"> <Link to={`/albums/${favorite.id}`}>{favorite.attributes.title}</Link> </h5>
-                  <h6 class="card-artist">{favorite.attributes.artist}</h6>
-                  <h6 class="card-genre">{favorite.attributes.genre}</h6>
+                <img className="card-top" src={favorite.attributes.cover} alt="Card cap"></img>
+                <div className="card-body">
+                <h5 className="card-title"> <Link to={`/albums/${favorite.id}`}>{favorite.attributes.title}</Link> </h5>
+                  <h6 className="card-artist">{favorite.attributes.artist}</h6>
+                  <h6 className="card-genre">{favorite.attributes.genre}</h6>
                 </div>
-                <div class="card-body">
-    <a href="#" class="card-link">TrackList</a>
-    <a href="#" class="card-link">See Reviews</a>
+                <div className="card-body">
+    <a href="#" className="card-link">TrackList</a>
+    <a href="#" className="card-link">See Reviews</a>
     <br></br>
     <Link to={`/albums/${favorite.id}/edit`}>Edit</Link>
 
