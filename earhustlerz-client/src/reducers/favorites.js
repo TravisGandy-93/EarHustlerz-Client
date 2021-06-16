@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
         case "UPDATE_FAVORITE":
             return state.map(favorite => favorite.id === action.favorite.id ? action.favorite : favorite)
         case "DELETE_FAVORITE":
-            return state            
+            return state.filter(favorite => favorite.id === action.id ? false : true)            
         case "CLEAR_FAVORITES":
             return initialState
     default:
