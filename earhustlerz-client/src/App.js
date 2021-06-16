@@ -33,13 +33,13 @@ class App extends React.Component {
       <Route exact path="/signup" component={Signup}/>
 
       <Route exact path="/" render={(props)=> loggedIn? <Favorites {...props}/> : <Home {...props}/>}/>
+     
+      <Route exact path="/albums/new" component={NewFavoriteFormContainer}/>
       
       <Route exact path="/favorites" render={(props) => {
         const userFavorites = favorites.filter(favorite => favorite.attributes.user_id == currentUser.id)
         return userFavorites.map((favorite) => <FavoriteCard favorite={favorite} {...props}/>)
       }}/>
-      
-      <Route exact path="/albums/new" component={NewFavoriteFormContainer}/>
       
       <Route exact path="/albums/:id" render={(props) => {
         const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
@@ -48,9 +48,10 @@ class App extends React.Component {
        
        <Route exact path="/albums/:id/edit" render={props => {
          const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
-       // setFavoriteForEdit(favorite)
         return <EditFavoriteFormContainer favorite={favorite} {...props}/>
       }}/>
+
+
       </Switch> 
      {/* <MainContainer/> */} 
     </div>

@@ -1,13 +1,20 @@
 import React from 'react'
-import  from './.js'
+import {connect} from 'react-redux'
+import ReviewsList from './ReviewsList.js'
+import ReviewsForm from './ReviewsForm.js'
 
-const ReviewContainer = () => {
+const ReviewContainer = ({favorite}) => {
+
     return (
-        <div className="ReviewsContainer">
-            <ReviewsList/>
-            <ReviewsForm/>
-        </div>
+        favorite ? <ReviewsList/> : <ReviewsForm/>
+     
     )
 }
 
-export default ReviewContainer
+const mapStateToProps = ({favorites}) => {
+    return {
+        favorites
+    }
+}
+
+export default connect(mapStateToProps)(ReviewContainer)
