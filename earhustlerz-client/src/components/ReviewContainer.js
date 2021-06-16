@@ -1,19 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ReviewsList from './ReviewsList.js'
+// import ReviewsList from './ReviewsList.js'
 import ReviewsForm from './ReviewsForm.js'
 
 const ReviewContainer = ({favorite}) => {
 
     return (
-        favorite ? <ReviewsList/> : <ReviewsForm/>
+        favorite ? <p>idk</p> : <ReviewsForm/>
      
     )
 }
 
-const mapStateToProps = ({favorites}) => {
+const mapStateToProps = ({favorite}) => { 
     return {
-        favorites
+        favorite
     }
 }
 

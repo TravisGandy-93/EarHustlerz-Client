@@ -13,6 +13,7 @@ import FavoriteCard from './components/FavoriteCard';
 import NewFavoriteFormContainer from './components/NewFavoriteFormContainer';
 import EditFavoriteFormContainer from './components/EditFavoriteFormContainer';
 import { setFavoriteForEdit } from './actions/favoriteForm'
+import ReviewContainer from './components/ReviewContainer';
 
 
 class App extends React.Component {
@@ -51,7 +52,7 @@ class App extends React.Component {
         return <EditFavoriteFormContainer favorite={favorite} {...props}/>
       }}/>
 
-
+      <Route exact path="/albums/:id/reviews" component={ReviewContainer}/>
       </Switch> 
      {/* <MainContainer/> */} 
     </div>
