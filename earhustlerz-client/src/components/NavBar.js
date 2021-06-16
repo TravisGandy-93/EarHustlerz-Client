@@ -12,7 +12,7 @@ const NavBar = ({ currentUser }) => {
         <div className="NavBar"> 
           { currentUser ? <h2>Wassup { currentUser.attributes.username }</h2> : "" } 
           <NavLink to="/">Home</NavLink>
-          { currentUser ? <NavLink to="/albums">All Albums</NavLink> : "" }
+          { currentUser ? <NavLink to="/favorites">Your Favorites</NavLink> : "" }
           { currentUser ? <NavLink to="/albums/new">Add Album</NavLink> : "" }
           { currentUser ? <NavLink to="/reviews">See All Reviews</NavLink> : "" }
           { currentUser ? <Logout/> : "" }
