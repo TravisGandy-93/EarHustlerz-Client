@@ -19,11 +19,13 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm}) => {
         return (
 
     <div className="ReviewForm">
-        Yerrrrrrrr. I am a ReviewForm.
+        <h3>Review Albums</h3>
       <form onSubmit={handleSubmit}>
         <textarea placeholder="Write your honest review..." name="content" onChange={handleChange} rows="4" cols="50">
              
         </textarea>
+        <br></br>
+        <input type="Submit" value="Submit Review" />
       </form>
     </div>
         )
