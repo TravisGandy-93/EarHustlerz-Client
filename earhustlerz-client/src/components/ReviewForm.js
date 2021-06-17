@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateReviewForm, createReview } from '../actions/reviewForm.js'
-// import { AutoComplete } from "@progress/kendo-react-dropdowns"
+import { AutoComplete } from "@progress/kendo-react-dropdowns"
 
 
 
-const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview}) => {
+
+const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview, favorites}) => {
+    const favoriteList = favorites.map(f => f.attributes.title)
+     console.log(favoriteList);
     const handleChange = event =>{
         console.log("in handle change");
         const { name, value } = event.target
@@ -29,13 +32,15 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview}
         </textarea>
         <br></br>
         <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Choose Album To Review
-  </button>
+            <h5>
+                 Choose Album To Review
+            </h5>
+            <AutoComplete data={favoriteList} placeholder="album title"/>
+        </div>
 
-</div>
         <br></br>
-        <input type="Submit" value="Submit Review" />
+            <div style={{ display: "flex" }}> <input type="Submit" value="Submit Review" /> </div>
+       
       </form>
 </div>
         )
@@ -46,7 +51,8 @@ const mapStateToProps = state => {
     const {content, likes, dislikes} = state.reviewForm
     return {
        formData: state.reviewForm,
-       user_id: userId
+       user_id: userId,
+       favorites: state.favorites
     }
 }
 
