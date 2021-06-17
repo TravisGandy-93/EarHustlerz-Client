@@ -8,10 +8,14 @@ import { AutoComplete } from "@progress/kendo-react-dropdowns"
 
 const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview, favorites}) => {
     const favoriteList = favorites.map(f => f.attributes.title)
-     console.log(favoriteList);
+    const favoritesSorted = favoriteList.sort( (a, b) => a.localeCompare(b, 'fr', {ignorePunctuation: true}));
+    const [value, setValue] = React.useState("");
+
+
     const handleChange = event =>{
         console.log("in handle change");
         const { name, value } = event.target
+        setValue(value);
         updateReviewForm(name, value)
     } 
 
@@ -35,7 +39,7 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview,
             <h5>
                  Choose Album To Review
             </h5>
-            <AutoComplete data={favoriteList} placeholder="album title"/>
+            <AutoComplete name="album_id" data={favoritesSorted} suggest={true} onChange={handleChange} placeholder="album title"/>
         </div>
 
         <br></br>
@@ -48,7 +52,7 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview,
 
 const mapStateToProps = state => {
     const userId = state.currentUserReducer ? state.currentUserReducer.id : ""
-    const {content, likes, dislikes} = state.reviewForm
+    const {content, likes, dislikes, album_id} = state.reviewForm
     return {
        formData: state.reviewForm,
        user_id: userId,
