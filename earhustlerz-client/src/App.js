@@ -54,7 +54,7 @@ class App extends React.Component {
 
       <Route exact path="/albums/:id/reviews" render={props => {
       const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
-        return <ReviewContainer favorite={favorite}/>
+        return <ReviewContainer favorite={""}/>
       }}/>
       </Switch> 
      {/* <MainContainer/> */} 
