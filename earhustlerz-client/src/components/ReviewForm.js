@@ -1,8 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateReviewForm, createReview } from '../actions/reviewForm.js'
+// import { AutoComplete } from "@progress/kendo-react-dropdowns"
 
-const ReviewForm = ({formData, user_id, history, updateReviewForm}) => {
+
+
+const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview}) => {
     const handleChange = event =>{
         console.log("in handle change");
         const { name, value } = event.target
@@ -25,9 +28,16 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm}) => {
              
         </textarea>
         <br></br>
+        <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Choose Album To Review
+  </button>
+
+</div>
+        <br></br>
         <input type="Submit" value="Submit Review" />
       </form>
-    </div>
+</div>
         )
 }
 
@@ -42,4 +52,4 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps,{ updateReviewForm })(ReviewForm)
+export default connect(mapStateToProps,{ updateReviewForm, createReview })(ReviewForm)
