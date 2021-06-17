@@ -30,11 +30,11 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm}) => {
 }
 
 const mapStateToProps = state => {
+    const userId = state.currentUserReducer ? state.currentUserReducer.id : ""
     const {content, likes, dislikes} = state.reviewForm
     return {
-       content,
-       likes,
-       dislikes
+       formData: state.reviewForm,
+       user_id: userId
     }
 }
 

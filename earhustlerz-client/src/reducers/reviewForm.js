@@ -1,5 +1,7 @@
 const initialState = {
-   content: ""
+   content: "",
+   likes: 0,
+   dislikes: 0
 }
 
 export default (state = initialState, action) => {
