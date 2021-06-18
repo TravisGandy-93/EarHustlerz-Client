@@ -15,6 +15,6 @@ export const resetReviewForm = () => {
 
 //async
 
-export const createReview = () => {
-console.log("inside async");
+export const createReview = (reviewFormData, history) => {
+console.log("inside async", reviewFormData);
 }
