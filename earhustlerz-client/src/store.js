@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import usersReducer from './reducers/users.js'
 import currentUserReducer from './reducers/currentUser.js'
 import loginForm from './reducers/loginForm.js'
 import favorites from './reducers/favorites.js'
