@@ -16,5 +16,33 @@ export const resetReviewForm = () => {
 //async
 
 export const createReview = (reviewFormData, history) => {
-console.log("inside async", reviewFormData);
+    return dispatch => {
+        const sendableReviewData = {
+            content: reviewFormData.content,
+            user_id: reviewFormData.user_id,
+            album_id: reviewFormData.album_id,
+            likes: reviewFormData.likes,
+            dislikes: reviewFormData.dislikes
+        }
+        return fetch("http://localhost:3000/api/v1/reviews", {
+        credentials: "include",  
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(sendableReviewData)
+        })
+        .then(r => r.json())
+        .then(resp => {
+          if (resp.error) {
+            alert(resp.error)
+          } else {
+           // dispatch(addReview(resp.data))
+            console.log(resp.data);
+           // dispatch(resetReviewForm())
+           // history.push(`/albums/${resp.data.id}`)
+          }
+        })
+          .catch(console.log())
+      }
 }

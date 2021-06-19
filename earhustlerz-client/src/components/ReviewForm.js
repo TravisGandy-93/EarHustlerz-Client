@@ -25,10 +25,11 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview,
 
     
 
-    const handleSubmit = (event, formData, user_id, album_id) => {
+    const handleSubmit = event => {
         event.preventDefault()
         createReview({
           ...formData,
+          user_id
         }, history)
     } 
 
@@ -44,6 +45,11 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview,
     <div className="ReviewForm">
         <h3>Review Albums</h3>
       <form onSubmit={handleSubmit}>
+          {/*
+          
+          TEXT AREA OF REVIEW FORM
+
+          */}
         <textarea placeholder="Write your honest review..." name="content" onChange={handleChange} rows="4" cols="50">
              
         </textarea>
@@ -53,8 +59,14 @@ const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview,
                  Choose Album To Review
             </h5> 
         </div>
+         {/*
+          
+          SELECT TAG OF REVIEW FORM
+
+          */}
           <div className="select">
-            <select value={value?.id} onChange={(e) => selectHandler(e)} name={"album_id"} placeholder="Select the Album you're reviewing...">
+            <select value={value?.id} onChange={(e) => selectHandler(e)} name={"album_id"} >
+                    <option placeholder="Select the Album you're reviewing...">...</option>
                     {favorites.map(f => <option key={f.id} value={f.id}>"{f.attributes.title}" by {f.attributes.artist}</option>)}
             </select>
           </div>
