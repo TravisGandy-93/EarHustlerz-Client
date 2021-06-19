@@ -3,10 +3,10 @@ import {connect} from 'react-redux'
 import ReviewList from './ReviewList.js'
 import ReviewForm from './ReviewForm.js'
 
-const ReviewContainer = (props) => {
-  //  const favorite = props.favorites.find(favorite => favorite.id === props.match.params.id)
+const ReviewContainer = ({favorite}) => {
+ // const favorite = props.favorites.find(favorite => favorite.id === props.match.params.id)
     return (
-        props.favorite ? <ReviewList/> : <ReviewForm/>
+        favorite.attributes.reviews.length > 0 ? <ReviewList/> : <ReviewForm/>
      
     )
 }
