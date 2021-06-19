@@ -1,3 +1,5 @@
+import { addReview } from "./review";
+
 export const updateReviewForm = (name, value) => {
    const formData = {name, value}
     return {
@@ -12,6 +14,7 @@ export const resetReviewForm = () => {
        
     }
 }
+
 
 //async
 
@@ -37,10 +40,10 @@ export const createReview = (reviewFormData, history) => {
           if (resp.error) {
             alert(resp.error)
           } else {
-           // dispatch(addReview(resp.data))
             console.log(resp.data);
-           // dispatch(resetReviewForm())
-           // history.push(`/albums/${resp.data.id}`)
+           dispatch(addReview(resp.data))
+           dispatch(resetReviewForm())
+           history.push(`/albums/${resp.data.attributes.album.id}/reviews`)
           }
         })
           .catch(console.log())
