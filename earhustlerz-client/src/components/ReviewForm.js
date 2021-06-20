@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { updateReviewForm, createReview } from '../actions/reviewForm.js'
 import Select from "react-dropdown-select";
+import { useHistory, withRouter } from 'react-router-dom';
 
 
 
@@ -10,11 +11,12 @@ import Select from "react-dropdown-select";
 
 
 
-const ReviewForm = ({formData, user_id, history, updateReviewForm, createReview, favorites, state}) => {
+const ReviewForm = ({formData, user_id, updateReviewForm, createReview, favorites, review}) => {
     const favoriteList = favorites.map(f => f.attributes.title)
     const favoritesSorted = favoriteList.sort( (a, b) => a.localeCompare(b, 'fr', {ignorePunctuation: true}));
     const [value, setValue] = useState("")
     const data = favorites.map(f => f.attributes)
+    const history = useHistory()
 
     const handleChange = event =>{
         console.log("in handle change");
@@ -85,10 +87,9 @@ const mapStateToProps = state => {
        formData: state.reviewForm,
        user_id: userId,
        favorites: state.favorites, 
-    
     }
 }
 
 
 
-export default connect(mapStateToProps,{ updateReviewForm, createReview })(ReviewForm)
+export default withRouter(connect(mapStateToProps,{ updateReviewForm, createReview })(ReviewForm))

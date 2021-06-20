@@ -6,6 +6,7 @@ import favorites from './reducers/favorites.js'
 import signupForm from './reducers/signupForm.js'
 import favoriteForm from './reducers/favoriteForm' 
 import reviewForm from './reducers/reviewForm'
+import review from './reducers/review'
 
 const reducer = combineReducers({
     currentUserReducer,
@@ -13,8 +14,9 @@ const reducer = combineReducers({
     favorites,
     signupForm,
     favoriteForm,
-    reviewForm
-  })
+    reviewForm,
+    review
+  }) 
 
   const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

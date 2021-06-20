@@ -1,5 +1,7 @@
 import { clearFavorites, getFavorites } from "./favorites.js"
+
 import { resetLoginForm } from "./loginForm.js"
+import { getReviews } from "./review.js"
 import { resetSignupForm } from "./signupForm.js"
 
 //synchronous action creator
@@ -97,6 +99,7 @@ export const getCurrentUser = () => {
           } else {
             dispatch(setCurrentUser(response.data))
             dispatch(getFavorites(response.data))
+            dispatch(getReviews(response.data))
           }
         })
         .catch(console.log)
