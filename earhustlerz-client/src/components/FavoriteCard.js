@@ -16,7 +16,7 @@ const FavoriteCard = ({favorite}) => {
                 <div className="card-body">
                   <span><Link to="">TrackList</Link></span>
                   <span>    |     </span>
-                  <span><Link to={`albums/${favorite.id}/reviews`}>See Reviews</Link></span>
+                  <span><Link to={`/reviews/${favorite.id}`}>See Reviews</Link></span>
                 <br></br>
                 <Link to={`/albums/${favorite.id}/edit`}>Edit</Link>
 
