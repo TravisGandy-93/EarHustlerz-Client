@@ -9,7 +9,7 @@ import {  NavLink } from 'react-router-dom'
 
 const NavBar = ({ currentUser }) => {
     return (
-      <nav class="navbar navbar-dark bg-primary">
+      <nav class="navbar navbar-light bg-success">
         <div className="NavBar"> 
           { currentUser ? <h2> Wassup { currentUser.attributes.username }  </h2> : "" } 
           <NavLink to="/">|   Home   |</NavLink>
@@ -18,7 +18,9 @@ const NavBar = ({ currentUser }) => {
           { currentUser ? <NavLink to="/reviews">|   Add Review   |</NavLink> : "" } 
           { currentUser ? <Logout/> : "" }
         </div>
+      <h4>Here at EarHustlerz you can be a voice, an eye, or an ear to the community... The mastery is in being all three..</h4>  
       </nav>
+
     )
 }
 
