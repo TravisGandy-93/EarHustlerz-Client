@@ -14,6 +14,7 @@ import NewFavoriteFormContainer from './components/NewFavoriteFormContainer';
 import EditFavoriteFormContainer from './components/EditFavoriteFormContainer';
 import { setFavoriteForEdit } from './actions/favoriteForm'
 import ReviewContainer from './components/ReviewContainer';
+import ReviewList from './components/ReviewList';
 
 
 class App extends React.Component {
@@ -56,6 +57,10 @@ class App extends React.Component {
       const favorite = favorites.find(favorite => favorite.id === props.match.params.id)
         return <ReviewContainer favorite={favorite} {...props}/>
       }}/>
+
+      <Route exact path="/reviews/:id" render={props => {
+        const favorite = favorites.find(f=>f.id === props.match.params.id)
+        return <ReviewList favorite={favorite}/>}}/>
       </Switch> 
      {/* <MainContainer/> */} 
     </div>

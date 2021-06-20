@@ -43,7 +43,7 @@ export const createReview = (reviewFormData, history) => {
             console.log(resp.data);
            dispatch(addReview(resp.data))
            dispatch(resetReviewForm())
-           history.push(`/albums/${resp.data.attributes.album.id}/reviews`)
+           history.push(`/reviews/${resp.data.attributes.album.id}`)
           }
         })
           .catch(console.log())
