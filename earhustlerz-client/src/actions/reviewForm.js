@@ -1,3 +1,4 @@
+import { getFavorites } from "./favorites";
 import { addReview } from "./review";
 
 export const updateReviewForm = (name, value) => {
@@ -43,6 +44,7 @@ export const createReview = (reviewFormData, history) => {
             console.log(resp.data);
            dispatch(addReview(resp.data))
            dispatch(resetReviewForm())
+           dispatch(getFavorites())
            history.push(`/reviews/${resp.data.attributes.album.id}`)
           }
         })

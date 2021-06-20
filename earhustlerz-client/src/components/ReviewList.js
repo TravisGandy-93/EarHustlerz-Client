@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Review from './Review';
 import FavoriteCard from './FavoriteCard';
+import { Link } from 'react-router-dom'
 
 
 const ReviewList = ({favorite}) => {
@@ -12,6 +13,7 @@ const ReviewList = ({favorite}) => {
            <div>
            <FavoriteCard favorite={favorite}/>
           {reviewCard ? reviewCard : null}
+          <Link to={`/reviews`}>Add Review</Link>
           </div>
        )
 }
