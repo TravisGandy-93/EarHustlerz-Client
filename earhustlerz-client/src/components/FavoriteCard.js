@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom'
 const FavoriteCard = ({favorite}) => {
     return (
         favorite ? 
-                <div className="card">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-6-offset-3 col-center">
+                <div className="card text-white bg-dark mb-3" style={{width: "50rem"}}>
                  
                 <img className="card-top" src={favorite.attributes.cover} alt="Card cap" ></img>
               
@@ -20,8 +23,11 @@ const FavoriteCard = ({favorite}) => {
                 <br></br>
                 <Link to={`/albums/${favorite.id}/edit`}>Edit</Link>
 
-  </div>
-                </div>  : <p>No Card</p>
+    </div>
+                </div>
+                </div>
+        </div>
+        </div>  : <p>No Card</p>
     )
 }
 
