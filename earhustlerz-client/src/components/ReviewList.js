@@ -2,13 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Review from './Review';
 import FavoriteCard from './FavoriteCard';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 
-const ReviewList = ({favorite}) => {
+const ReviewList = ({favorite, reviews, match}) => {
    
-   const reviewCard = favorite.attributes.reviews.map(r=> <Review favorite={favorite} review={r} key={r.id} />)
-   console.log(favorite.attributes);
+    const currentReviews = reviews.filter(r=>r.attributes.album.id == match.params.id)
+   const reviewCard = currentReviews.map(r=> <Review review={r} key={r.id} />)
+   console.log(currentReviews);
        return (
            <div>
            <FavoriteCard favorite={favorite}/>
@@ -18,7 +19,10 @@ const ReviewList = ({favorite}) => {
        )
 }
 
+const mapStateToProps = ({review}) => {
+    return {
+        reviews: review
+    }
+}
 
-
-
-export default connect(null)(ReviewList)
+export default connect(mapStateToProps)(withRouter(ReviewList))
