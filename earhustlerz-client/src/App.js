@@ -16,6 +16,7 @@ import { setFavoriteForEdit } from './actions/favoriteForm'
 import ReviewContainer from './components/ReviewContainer';
 import ReviewList from './components/ReviewList';
 import ReviewForm from './components/ReviewForm';
+import TextBox from './components/TextBox';
 
 
 class App extends React.Component {
@@ -29,7 +30,7 @@ class App extends React.Component {
   return (
     <div className="App">
       <NavBar/>
-      
+      <TextBox/>
       <Switch>
       <Route exact path="/login" component={Login}/>
 
